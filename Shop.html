@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polaroid Generator</title>
+    <link rel="stylesheet" href="shop-style.css">
+    <script src="https://kit.fontawesome.com/f29a740784.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        
+    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <a href="index.html"><i class="fa-solid fa-camera-retro"></i></a>
+               
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                </ul>
+            </div>
+            <p>Frame Your Memories with our <span>Polaroid Frame Collection</span> for Timeless Charm!</p>
+        </div>
+
+
+            <div class="sub-header">
+                <p>Product Gallery</p>
+                <div class="cart-icon"> 
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>0</span>
+                </div>     
+            </div>
+      
+            <div class="gallery-wrap">
+                <i class="fa-solid fa-circle-chevron-left" id="backBtn"> </i> 
+                <div class="gallery">
+                    
+                        <div>
+                            <span><img src="images/Frame3.png"></span>
+                            <h3>Instax Mini Acrylic Frame</h3>
+                            <p>Rs. 500</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame8.png"></span>
+                            <h3>Instax Wide Aclylic Frame</h3>
+                            <p>Rs. 1000</p>
+                            <button>Add to Cart</button>
+                        </div>
+                        <div>
+                            <span><img src="images/Frame9.png"></span>
+                            <h3>Instax Square Acrylic Frame</h3>
+                            <p>Rs. 1000</p>
+                            <button>Add to Cart</button>
+                        </div>
+                        
+                        <div>
+                            <span><img src="images/Frame4.png"></span>
+                            <h3>Instax Mini Coloured Frame</h3>
+                            <p>Rs. 300</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame5.png"></span>
+                            <h3>Instax Mini Fridge Magnet Frame</h3>
+                            <p>Rs. 350</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame6.png"></span>
+                            <h3>Instax Mini Fridge Magnet Frame (5pcs)</h3>
+                            <p>Rs. 1500</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame1.jpeg"></span>
+                            <h3>Instax Mini Acrylic Block Frame</h3>
+                            <p>Rs. 1200</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame2.jpeg"></span>
+                            <h3>Instax Mini Aclylic Box Frame</h3>
+                            <p>Rs. 1500</p>
+                            <button>Add to Cart</button>
+                        </div>
+
+                        <div>
+                            <span><img src="images/Frame7.png"></span>
+                            <h3>Instax Square Coloured Frame</h3>
+                            <p>Rs. 600</p>
+                            <button>Add to Cart</button>
+                        </div>
+                        
+                    </div>
+                    
+
+                <i class="fa-solid fa-circle-chevron-right" id="nextBtn"> </i> 
+            </div>
+            
+       
+
+        <div class="copyrights">
+            <p>Copyrights &copy; Pakizah Saqib </p>
+        </div>
+    
+    </div>
+    <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart">
+            <div class="items">
+                <img src="images/Frame1.jpeg">
+                <h2>Name Product</h2>
+                <div class="price">
+                    Rs. 1500
+                </div>
+                <div class="quantity">
+                    <span class="minus"><</span>
+                    <span>1</span>
+                    <span class="plus">></span>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <button class="close">Close</button>
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>    
+
+
+    
+    
+    
+  
+    <script>
+        
+        let scrollContainer = document.querySelector(".gallery");
+        let backBtn = document.getElementById("backBtn");
+        let nextBtn = document.getElementById("nextBtn");
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY;
+            scrollContainer.style.scrollBehavior = "auto";
+        });
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaX;
+            scrollContainer.style.scrollBehavior = "auto";
+           
+        });
+
+
+        nextBtn.addEventListener("click", ()=>{
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft += 300;
+        })
+
+        backBtn.addEventListener("click", ()=>{
+            scrollContainer.style.scrollBehavior = "smooth";
+            scrollContainer.scrollLeft -= 300;
+        })
+
+        let cartTab = document.querySelector('.cartTab');
+        let cartIcon = document.querySelector('.cart-icon');
+        let closeCart = document.querySelector('.close');
+        let checkOut = document.querySelector('.checkout');
+        let listProductHTML = document.querySelector('.listCart');
+
+        let listProducts = [];
+        cartIcon.addEventListener('click', ()=>{
+            cartTab.style.display = 'block';
+        })
+        closeCart.addEventListener('click', ()=>{
+            cartTab.style.display = 'none';
+        })
+
+        const addDatatoHTML = () => {
+            listProductHTML.innerHTML = '';
+            if (listProducts.forEach (product => {
+                let newProduct = document.createElement('div');
+                newProduct.classList.add('item');
+              
+            }));
+        }
+
+  
+    
+       
+    </script>
+    
+</body>
+</html>

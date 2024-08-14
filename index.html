@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polaroid Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f29a740784.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        
+    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <a href="index.html"><i class="fa-solid fa-camera-retro"></i></a>
+                <ul>
+                    <li><a href="Shop.html">SHOP</a></li>
+                </ul>
+            </div>
+                
+                
+            <p>Create timeless <span>Polaroid-style photos</span> with our polaroid generator!</p>
+        </div>
+        <div class="sub-container"> 
+            <div class="left-container">
+                <div id="card">
+                    <img id="texture" src="images/textured-bg.png">
+                    <img src="images/textured-bg.png" id="polaroid-pic">
+                    <p id="polaroid-text" class="thirty-chars"></p>    
+                </div>
+                <div class="color-buttons">
+                    <button id="btn1" onclick="setLavender()"></button>
+                    <button id="btn2" onclick="setBlack()"></button>
+                    <button id="btn3" onclick="setWhite()"></button>
+                </div>
+                <div class="UploadPrint">
+                    <label for="input-file">Upload Image</label>
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
+                    <label for="print">Print Polaroid</label>
+                    <input type="button" onclick="printPolaroid()" id="print">
+                </div>
+            </div>
+    
+            <div class="right-container">
+                <div class="buttons">
+                    <button onclick="setSquare()">Instax Square</button>
+                    <button onclick="setWide()">Instax Wide</button>
+                    <button onclick="setMini()">Instax Mini</button>
+                    <button id="mono" onclick="setGrey()">Grayscale</button>
+                    <button onclick="addDate()">Add Date</button>
+                    <button id="captionBtn" onclick="setDisplay()">Add Caption</button>
+                    <input type="text" id="caption" placeholder="Enter your caption here..." onchange="setCaption()">
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyrights">
+            <p>Copyrights &copy; Pakizah Saqib </p>
+        </div>
+    
+    </div>
+    
+    
+  
+    <script>
+        
+        let polaroidPic = document.getElementById("polaroid-pic");
+        let polaroidText = document.getElementById("polaroid-text");
+        let inputFile = document.getElementById("input-file");
+        let caption = document.getElementById("caption");
+        let captionBtn = document.getElementById("captionBtn");
+        let card = document.getElementById('card');
+        let mono = document.getElementById('mono');
+        let flag = 0;
+        let originalImage= polaroidPic.src;
+        var sidemenu=document.getElementById("side-menu");
+        
+       
+        inputFile.onchange = function(){
+            polaroidPic.src = URL.createObjectURL(inputFile.files[0]);
+            originalImage= polaroidPic.src;
+            polaroidPic.animate([
+            { opacity: '0' },
+            { opacity: '1' }
+            ], {
+            duration: 1000,
+            });
+           
+        }
+        
+        
+        caption.onchange = function setCaption(){
+            polaroidText.innerText = caption.value;
+        }
+        function setWide(){
+            card.style.width = '408px';
+            polaroidPic.style.width = '375px';
+            polaroidPic.style.heigth = '235px';
+            polaroidText.classList.remove('twentyTwo-chars');
+            polaroidText.classList.remove('thity-chars');
+            polaroidText.classList.add('forty-chars');
+        }
+        function setMini(){
+            card.style.width = '200px';
+            polaroidPic.style.width = '174px';
+            polaroidPic.style.heigth = '230px';
+            polaroidText.classList.remove('thirty-chars');
+            polaroidText.classList.remove('forty-chars');
+            polaroidText.classList.add('twentyTwo-chars');
+        }
+       
+        function setSquare(){
+            card.style.width = '268px';
+            polaroidPic.style.width = '230px';
+            polaroidPic.style.heigth = '230px';
+            polaroidText.classList.remove('twentyTwo-chars');
+            polaroidText.classList.remove('forty-chars');
+            polaroidText.classList.add('thirty-chars');
+            
+        }
+
+        function setGrey(){
+            if(flag===0)
+            {
+                polaroidPic.style.filter = 'grayscale(100%)';
+                flag = 1;
+                mono.textContent = "Original Image";
+                
+            }
+            else 
+            {
+                polaroidPic.src = originalImage;
+                polaroidPic.style.filter ='none';
+                flag = 0;
+                mono.textContent = "Grayscale";
+            }
+
+
+        }
+        function addDate(){
+            n =  new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+            polaroidText.innerHTML = m + "/" + d + "/" + y;
+            
+        }
+
+        function setDisplay(){
+            caption.style.display='block';
+            captionBtn.style.display='none';
+
+        }
+        function setWhite(){
+            card.style.background = '#fff';
+            polaroidText.style.color = '#333';
+        }
+        function setBlack(){
+            card.style.background = '#222';
+            polaroidText.style.color = '#fff';
+
+        }
+        function setLavender(){
+            card.style.background = '#967bb6';
+            polaroidText.style.color = '#fff';
+        }
+
+        function printPolaroid()
+        {
+            print();
+        }
+        
+       
+    </script>
+    
+</body>
+</html>
