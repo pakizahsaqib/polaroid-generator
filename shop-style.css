@@ -85,17 +85,17 @@ i:hover{
 
 /* SUB-HEADER */
 .sub-header{
-    width: 900px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 40px;
     padding: 20px 0 0;
+    font-size: 20px;
 
 }
 .sub-header p{
     color: #333;
     font-family: poppins;
-    font-size: 25px;
     font-weight: 600;
 }
 .cart-icon{
@@ -132,9 +132,6 @@ i:hover{
     width: 900px;
     display: flex;
     overflow-x: scroll;
-   
-    
-    
 }
 
 .gallery div{
@@ -211,18 +208,18 @@ button{
    
 }
 
-/*----CONTAINER----*/
+/*----CART TAB PART OF CONTAINER----*/
 
 .cartTab{
+    display: flex;
+    flex-direction: column;
     width: 400px;
-    background-color: #333;
-    color: #fff;
-
+    background-color: #fff;
+    color: #333333;
     position: fixed;
     inset: 0 0 0 auto;
-    display: grid;
-    grid-template-rows: 70px 1fr 70px;
-    display:none;
+
+   
 
 }
 
@@ -230,15 +227,18 @@ button{
 .cartTab h1{
     padding: 20px;
     margin: 0;
-    font-weight: 300;
-    
+    font-family: cursive;
+    background-color: #ececec;
   
 }
 
 .cartTab .btn{
 
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    padding: 20px;
+    
    
 
 }
@@ -247,17 +247,16 @@ button{
     background-color: #ef536d;
     color: #fff;
     border: none;
-    height: 70px;
-    font-weight: 500;
     cursor: pointer;
 }
 .cartTab .listCart .items {
     display: grid;
-    grid-template-columns: 70px 150px 50px 1fr;
+    grid-template-columns: 70px 150px 60px 1fr;
     gap: 10px;
     text-align: center;
     align-items: center;
-  
+   
+    font-size: 14px;
 }
 
 .cartTab .listCart .items img{
@@ -265,28 +264,32 @@ button{
     padding: 10px;
 
 }
+.cartTab .listCart .items h2{
+  color: #333;
+  font-weight: normal;
+  font-size: 14px;
+
+}
 .listCart .quantity span{
     font-size: 13px;
     display: inline-block;
     width: 25px;
     height: 25px;
-    line-height: 22px;
-    background-color: #fff;   
+    line-height: 22px;   
     color: #333;
-  
     cursor: pointer;
-}
-.listCart .quantity span:nth-child(2){
-    background-color: transparent;
-    color: #fff;
-}
-
-.listCart .items:nth-child(even){
-    background-color: aliceblue;
 }
 
 .listCart {
     overflow: auto;
+}
+.totalPrice {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+    padding-right: 30px;
+    color: #333;
 }
 
 
@@ -362,4 +365,20 @@ button{
         color:#fff;
         font-size: 20px;
     }
+    .cart-icon span{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        font-size: 10px;
+        top:2px; 
+     
+        text-align: center;
+       
+        background-color: #ef536d;
+        color: #fff;
+        border-radius: 50%;
+        
+    }
+   
 }
